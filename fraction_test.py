@@ -33,8 +33,6 @@ class FractionTest(unittest.TestCase):
         # 3/4 = 2/3 + 1/12
         self.assertEqual(Fraction(3, 4), Fraction(1, 12) + Fraction(2, 3))
         self.assertNotEqual(Fraction(3, 5), Fraction(1, 12).__add__(Fraction(2, 3)))
-        with self.assertRaises(ValueError):
-            Fraction(1, 0).__add__(Fraction(1, 0))
         with self.assertRaises(TypeError):
             Fraction("a", "b").__add__(Fraction("a"))
         with self.assertRaises(TypeError):
@@ -55,10 +53,6 @@ class FractionTest(unittest.TestCase):
     def test_sub(self):
         self.assertEqual(Fraction(1), Fraction(3, 2) - Fraction(1, 2))
         self.assertNotEqual(Fraction(3), Fraction(3, 2).__sub__(Fraction(1, 2)))
-        with self.assertRaises(ValueError):
-            Fraction(1, 0).__sub__(Fraction(1, 0))
-        with self.assertRaises(TypeError):
-            Fraction("a", "b").__sub__(Fraction("a"))
         with self.assertRaises(TypeError):
             Fraction(1, "b").__sub__(Fraction("a", 0))
 
@@ -78,30 +72,29 @@ class FractionTest(unittest.TestCase):
             Fraction("a", "b").__neg__()
         with self.assertRaises(TypeError):
             Fraction(1, "b").__neg__()
+        with self.assertRaises(ValueError):
+            Fraction(0, 0).__neg__()
 
     def test_mul(self):
         self.assertEqual(Fraction(1, 4), Fraction(1, 2) * Fraction(1, 2))
-        self.assertNotEqual(Fraction(1, 4), Fraction(1, 2) * Fraction(1, 3))
-        with self.assertRaises(ValueError):
-            Fraction(1, 0).__mul__(Fraction(1, 0))
-        with self.assertRaises(TypeError):
-            Fraction("a", "b").__mul__(Fraction("a"))
-        with self.assertRaises(TypeError):
-            Fraction(1, "b").__mul__(Fraction("a", 0))
+        self.assertEqual(Fraction(-1, 6), Fraction(-1, 2) * Fraction(1, 3))
 
     def test_div(self):
         self.assertTrue(Fraction(1), (Fraction(1, 2) / Fraction(1, 2)))
         self.assertTrue(Fraction(1), (Fraction(1, 2).__truediv__(Fraction(1, 2))))
-        with self.assertRaises(ValueError):
-            Fraction(1, 0).__truediv__(Fraction(1, 0))
-        with self.assertRaises(TypeError):
-            Fraction("a", "b").__truediv__(Fraction("a"))
         with self.assertRaises(TypeError):
             Fraction(1, "b").__truediv__(Fraction("a", 0))
 
-    def check_div_zero(self):
-        with self.assertRaises(ZeroDivisionError):
-            Fraction(1, 0)
+    def test_determinate_form(self):
+        self.assertTrue("Determinate Form", Fraction(0) / Fraction(0))
+        self.assertTrue("Determinate Form", Fraction(1, 0) / Fraction(1, 0))
+        self.assertTrue("Determinate Form", Fraction(-1, 0) / Fraction(-1, 0))
+        self.assertTrue("Determinate Form", Fraction(1, 0) - Fraction(1, 0))
+        self.assertTrue("Determinate Form", Fraction(0) * Fraction(1, 0))
 
+    def test_indeterminate_form(self):
+        self.assertTrue("Indeterminate Form", Fraction(1,0) + Fraction(1,0))
+        self.assertTrue("Indeterminate Form", Fraction(-1, 0) + Fraction(-1, 0))
+        self.assertTrue("Indeterminate Form", Fraction(1, 0) * Fraction(1, 0))
         # TODO write more tests using other cases.
         # Consider special values like 0, 1/0, -1/0

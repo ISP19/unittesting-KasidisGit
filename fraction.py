@@ -3,7 +3,6 @@ import math
 
 class Fraction:
     """A fraction with a numerator and denominator and arithmetic operations.
-
     Fractions are always stored in proper form, without common factors in 
     numerator and denominator, and denominator >= 0.
     Since Fractions are stored in proper form, each value has a
@@ -32,7 +31,7 @@ class Fraction:
         except TypeError:
             raise ValueError("Input must be integer")
         else:
-            raise ValueError("Divider must not be zero")
+            return "Determinate Form"
 
     # TODO write __mul__ and __str__.  Verify __eq__ works with your code.
     # Optional have fun and overload other operators such as
@@ -48,7 +47,9 @@ class Fraction:
         except TypeError:
             raise ValueError("Input must be integer")
         else:
-            raise ValueError("Divider must not be zero")
+            if self.numerator > 0 and frac.numerator > 0:
+                return "Indeterminate Form"
+            return "Determinate Form"
 
     def __mul__(self, frac):
         try:
@@ -59,7 +60,9 @@ class Fraction:
         except TypeError:
             raise ValueError("Input must be integer")
         else:
-            raise ValueError("Divider must not be zero")
+            if self.numerator is 0 or frac.numerator is 0:
+                return "Indeterminate Form"
+            return "Determinate Form"
 
     def __truediv__(self, frac):
         try:
@@ -70,16 +73,18 @@ class Fraction:
         except TypeError:
             raise ValueError("Input must be integer")
         else:
-            raise ValueError("Divider must not be zero")
+            return "Indeterminate Form"
 
     def __gt__(self, frac):
-        if self.denominator is 0 and frac.denominator is 0:
-            if self.numerator > 0 and frac.numerator < 0:
-                return True
-            if self.numerator < 0 and frac.numerator > 0:
-                return False
-            return False
-        return self.fraction > frac.fraction
+        if frac.denominator is 0 and self.denominator is 0:
+            return self.numerator > frac.numerator
+        if self.denominator is 0:
+            self.numerator = frac.numerator + 1
+            self.denominator = 1
+        elif frac.denominator is 0:
+            frac.numerator = self.numerator + 1
+            frac.denominator = 1
+        return self.numerator > frac.numerator
 
     def __neg__(self):
         try:
@@ -88,7 +93,7 @@ class Fraction:
         except TypeError:
             raise ValueError("Input must be integer")
         else:
-            raise ValueError("Divider must not be zero")
+            raise ValueError("Undefined")
 
     def __eq__(self, frac):
         """Two fractions are equal if they have the same value.
@@ -97,10 +102,14 @@ class Fraction:
         """
         if self.denominator is 0 and frac.denominator is 0:
             if self.numerator >= 0 and frac.numerator <= 0:
-                return False
-            if self.numerator <= 0 and frac.numerator >= 0:
-                return False
-            return True
+                self.fraction = 1
+                frac.fraction = -1
+            elif self.numerator <= 0 and frac.numerator >= 0:
+                self.fraction = -1
+                frac.fraction = 1
+            else:
+                self.fraction = 0
+                frac.fraction = 0
         return self.fraction == frac.fraction
 
     def gcd(self, a, b):
@@ -109,7 +118,11 @@ class Fraction:
         return a
 
     def __str__(self):
+        if self.denominator is 0:
+            return "Indeterminate Form"
         if self.numerator % self.denominator == 0:
             return f"{self.fraction:.0f}"
         else:
             return f"{(self.numerator/(self.gcd(self.numerator,self.denominator))):.0f}/{((self.denominator/self.gcd(self.numerator,self.denominator))):.0f}"
+
+
