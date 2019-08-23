@@ -22,9 +22,9 @@ def unique(lst):
                     new_lst.append(element)
             return new_lst
     except TypeError:
-        raise ValueError("The argument must be list")
+        raise ValueError("The argument must be list.")
     else:
-        raise ValueError("The argument must be list")
+        raise ValueError("The argument must be list.")
 
 
 if __name__ == "__main__":
