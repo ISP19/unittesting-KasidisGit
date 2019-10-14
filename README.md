@@ -3,7 +3,6 @@
 
 by Kasidis Luangwutiwong.
 
-
 ## Test Cases for unique
 
 Write a table describing your test cases.
@@ -25,7 +24,7 @@ Write a table describing your test cases.
 | Test case              |  Expected Result    |
 |------------------------|---------------------|
 | str or init        | the fraction        |
-| add              |  sum of 2 fractions   |
+| add              |  sum of 2 fraction   |
 | sub    |  minus of 2 fractions   |
 | eq | check equal of 2 fractions  |
 | gt  |  check the more fraction       |
