@@ -1,6 +1,7 @@
+[![Build Status](https://travis-ci.com/KasidisGit/unittesting-KasidisGit.svg?branch=master)](https://travis-ci.com/KasidisGit/unittesting-KasidisGit)
 ## Unit Testing Assignment
 
-by Bill Gates.
+by Kasidis Luangwuti.
 
 
 ## Test Cases for unique

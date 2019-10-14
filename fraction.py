@@ -125,4 +125,4 @@ class Fraction:
         else:
             return f"{(self.numerator/(self.gcd(self.numerator,self.denominator))):.0f}/{((self.denominator/self.gcd(self.numerator,self.denominator))):.0f}"
 
-
+print(Fraction(1,0))
