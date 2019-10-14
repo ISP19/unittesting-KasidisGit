@@ -1,11 +1,7 @@
 [![Build Status](https://travis-ci.com/KasidisGit/unittesting-KasidisGit.svg?branch=master)](https://travis-ci.com/KasidisGit/unittesting-KasidisGit)
 ## Unit Testing Assignment
 
-<<<<<<< HEAD
-by Kasidis Luangwuti.
-=======
 by Kasidis Luangwutiwong.
->>>>>>> 5b118752a3a78e9f8dafafc9d8f8fea5a0555b07
 
 
 ## Test Cases for unique
