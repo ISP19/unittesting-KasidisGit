@@ -98,3 +98,6 @@ class FractionTest(unittest.TestCase):
         self.assertTrue("Indeterminate Form", Fraction(1, 0) * Fraction(1, 0))
         # TODO write more tests using other cases.
         # Consider special values like 0, 1/0, -1/0
+
+if __name__ == '__main__':
+     unittest.main(verbosity=2)

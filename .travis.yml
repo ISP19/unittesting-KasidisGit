@@ -5,5 +5,11 @@
  git:
    depth: 1
 
- script: 
-   - python3 -m unittest discover -p "*_test.py"
+  install:
+    - pip install codecov
+
+  script:
+    - (run your unit tests with "coverage" to generate code coverage data)
+
+  after_success:
+    - codecov
