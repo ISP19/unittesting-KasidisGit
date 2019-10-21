@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.com/KasidisGit/unittesting-KasidisGit.svg?branch=master)](https://travis-ci.com/KasidisGit/unittesting-KasidisGit)
-[![Build Status](https://codecov.io/gh/KasidisGit/unittesting-KasidisGit.svg?branch=master)](https://codecov.io/gh/KasidisGit/unittesting-KasidisGit)
-
+[![codecov](https://codecov.io/gh/KasidisGit/unittesting-KasidisGit/branch/master/graph/badge.svg)](https://codecov.io/gh/KasidisGit/unittesting-KasidisGit)
 ## Unit Testing Assignment
 
 by Kasidis Luangwutiwong.
