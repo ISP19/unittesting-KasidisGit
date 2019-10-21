@@ -11,8 +11,11 @@ env/
 .coverage
 htmlcov/
 /coverage
+coverage.xml
 
 # Pydev (Eclipse) and VSCode project files
 .project
 .pydevproject
 .vscode/
+
+.DS_Store
